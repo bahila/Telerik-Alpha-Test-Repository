@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1_GuessTheDate
+{
+    class GuessTheDate
+    {
+        static void Main(string[] args)
+        {
+            int year = int.Parse(Console.ReadLine());
+            int month = int.Parse(Console.ReadLine());
+            int day = int.Parse(Console.ReadLine());
+            string monthName = string.Empty;
+
+            day -= 1;
+            
+
+            if (day == 0)
+            {
+                month -= 1;
+                if (month != 0)
+                {
+                    if ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12))
+                    {
+                        day = 31;
+                    }
+                    else if ((month == 4) || (month == 6) || (month == 9) || (month == 11))
+                    {
+                        day = 30;
+                    }
+                    else if ((month == 2) && (year % 4 == 0))
+                    {
+                        day = 29;
+                    }
+                    else if (month == 2 && year % 4 != 0)
+                    {
+                        day = 28;
+                    }
+                }
+                else if (month == 0)
+                {
+                    month = 12;
+                    year -= 1;
+                    day = 31;
+                }
+            }
+                   
+            
+                switch (month)
+                {
+                    case 1: monthName = "Jan"; break;
+                    case 2: monthName = "Feb"; break;
+                    case 3: monthName = "Mar"; break;
+                    case 4: monthName = "Apr"; break;
+                    case 5: monthName = "May"; break;
+                    case 6: monthName = "Jun"; break;
+                    case 7: monthName = "Jul"; break;
+                    case 8: monthName = "Aug"; break;
+                    case 9: monthName = "Sep"; break;
+                    case 10: monthName = "Oct"; break;
+                    case 11: monthName = "Nov"; break;
+                    case 12: monthName = "Dec"; break;
+                    default: Console.WriteLine("Invalid input"); break;
+                }
+            
+            
+
+            if ((month == 2) && (year % 4 == 0) && day < 30)                
+            {
+                Console.WriteLine("{0}-{1}-{2}", day,monthName, year);
+            }
+            else if((month == 2) && (day > 0 && day < 29))
+            {
+                Console.WriteLine("{0}-{1}-{2}", day, monthName, year);
+            }
+            else
+            {
+                Console.WriteLine("{0}-{1}-{2}", day, monthName, year);
+            }
+            
+        }
+    }
+}
